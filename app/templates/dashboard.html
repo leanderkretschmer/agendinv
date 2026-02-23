@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgendaInv Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Dashboard: {{ user.username }}</h1>
+    <p><strong>API Key:</strong> <code>{{ user.api_key }}</code></p>
+    {% if message %}<div class="alert">{{ message }}</div>{% endif %}
+
+    <section class="card">
+      <h2>Neuen Endpoint erstellen</h2>
+      <form method="post" action="/web/endpoints">
+        <label>Name <input name="name" required /></label>
+        <label>Provider
+          <select name="provider">
+            {% for key, label in providers.items() %}
+              <option value="{{ key }}">{{ key }} - {{ label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>Konfiguration (JSON)
+          <textarea name="config_json" rows="4">{}</textarea>
+        </label>
+        <button type="submit">Speichern</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Meine Endpoints</h2>
+      <ul>
+        {% for ep in endpoints %}
+          <li><strong>#{{ ep.id }}</strong> {{ ep.name }} ({{ ep.provider }})</li>
+        {% else %}
+          <li>Noch keine Endpoints angelegt.</li>
+        {% endfor %}
+      </ul>
+      <p>Aufruf: <code>GET /api/universal/&lt;endpoint_id&gt;</code> mit Header <code>x-api-key</code>.</p>
+    </section>
+
+    {% if user.is_admin %}
+    <section class="card">
+      <h2>Admin</h2>
+      <form method="post" action="/web/admin/update">
+        <button type="submit">Update von GitHub ziehen</button>
+      </form>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>

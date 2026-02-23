@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgendaInv Login</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>AgendaInv Universal API</h1>
+    <p>Login zur Verwaltung deiner individuellen Daten-Endpunkte.</p>
+    {% if message %}<div class="alert">{{ message }}</div>{% endif %}
+    <form method="post" action="/web/login" class="card">
+      <label>Username <input name="username" required /></label>
+      <label>Passwort <input type="password" name="password" required /></label>
+      <button type="submit">Einloggen</button>
+    </form>
+    <p class="small">Erstnutzung: erstelle den ersten Benutzer via <code>POST /register</code>.</p>
+  </main>
+</body>
+</html>
