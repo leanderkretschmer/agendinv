@@ -27,22 +27,6 @@ uvicorn app.main:app --reload
 
 Dann öffnen: `http://127.0.0.1:8000`
 
-## Schnellstart mit Script
-
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-Das Script versucht fehlende Basis-Pakete automatisch zu installieren (z. B. `python3`, `python3-venv`, `python3-pip`, `git`) und startet danach die App.
-
-Optional kannst du Host/Port setzen:
-
-```bash
-HOST=0.0.0.0 PORT=8000 ./install.sh
-```
-
-
 ## Beispiel-Flow
 
 1. Benutzer registrieren (erstmals via API):
