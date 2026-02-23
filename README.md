@@ -27,20 +27,6 @@ uvicorn app.main:app --reload
 
 Dann öffnen: `http://127.0.0.1:8000`
 
-## Schnellstart mit Script
-
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-Optional kannst du Host/Port setzen:
-
-```bash
-HOST=0.0.0.0 PORT=8000 ./install.sh
-```
-
-
 ## Beispiel-Flow
 
 1. Benutzer registrieren (erstmals via API):
